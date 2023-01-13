@@ -1,6 +1,7 @@
 import './App.css';
 import ClientList from './components/list.component';
 import CreateClient from './components/createclient.component';
+import EditClient from './components/editclient.component';
 import { Link, Route, Routes, BrowserRouter as Router } from "react-router-dom";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ClientList/>}/>
           <Route path="/create/client" element={<CreateClient/>}/>
+          <Route path="/client/edit/:id" element={<EditClient/>}/>
         </Routes>
 
       </div>

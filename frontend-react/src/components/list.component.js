@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 class ClientList extends React.Component {
     constructor(props) {
@@ -8,6 +9,26 @@ class ClientList extends React.Component {
         isLoaded: false,
         clients: []
       };
+    }
+
+    delClient(id) {
+      console.log(id);
+      fetch('http://127.0.0.1:8000/api/client/'+id, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      }
+      )
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log(result);
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
     }
   
     componentDidMount() {
@@ -40,14 +61,6 @@ class ClientList extends React.Component {
         return <div>Carregando...</div>;
       } else {
         return (
-            
-          /*<ul>
-            {clients.map(client => (
-              <li key={client.id}>
-                Nome: {client.name} | CPF: {client.cpf} | Telefone: {client.telephone}
-              </li>
-            ))}
-          </ul>*/
 
           <table>
             <thead>
@@ -65,6 +78,8 @@ class ClientList extends React.Component {
                         <td>{client.name}</td>
                         <td>{client.cpf}</td>
                         <td>{client.telephone}</td>
+                        <td><button><Link to={{pathname:"/client/edit/"+client.id}}>Editar</Link></button></td>
+                        <td><button onClick={() => this.delClient(client.id)}>Excluir</button></td>
                     </tr>
                 ))}
             </tbody>

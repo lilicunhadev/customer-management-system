@@ -15,11 +15,11 @@ class CreateClient extends React.Component {
     }
   
     handleSubmit(event) {
-      const { name, cpf, telephone } = this.state
+      const {name, cpf, telephone} = this.state
         fetch("http://127.0.0.1:8000/api/client", {
             method: 'POST',
             headers: {
-                'Content-type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 name: name,
@@ -27,6 +27,7 @@ class CreateClient extends React.Component {
                 telephone: telephone
             })
         }
+        )
         .then(res => res.json())
         .then(
             (result) => {
@@ -42,8 +43,7 @@ class CreateClient extends React.Component {
                 });
             }
         )
-        )
-
+        
         event.preventDefault();
         this.props.navigate('/');
     }
@@ -53,15 +53,15 @@ class CreateClient extends React.Component {
         <form onSubmit={this.handleSubmit}>
 
             <label>
-                Nome: 
+                Nome: &nbsp;
                 <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
             </label><br/>
             <label>
-                CPF: 
+                CPF: &nbsp;
                 <input type="text" name="cpf" value={this.state.cpf} onChange={this.handleChange}/>
             </label><br/>
             <label>
-                Telefone: 
+                Telefone: &nbsp;
                 <input type="text" name="telephone" value={this.state.telephone} onChange={this.handleChange}/>
             </label><br/><br/>
 
