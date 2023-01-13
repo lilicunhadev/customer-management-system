@@ -64,7 +64,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        return Client::find($id);
     }
 
     /**
@@ -87,7 +87,24 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (Client::where('id', $id)->exists()) {
+            $client = Client::find($id);
+
+            $client->name = $request->name;
+            $client->cpf = $request->cpf;
+            $client->telephone = $request->telephone;
+
+            $client->save();
+
+            return response()->json([
+                'message' => 'Cliente atualizado com sucesso!'
+            ], 200);
+        }
+        else {
+            return response()->json([
+                'message' => 'Cliente não encontrado'
+            ], 404);
+        }
     }
 
     /**
