@@ -75,4 +75,4 @@ class ClientList extends React.Component {
     }
   }
 
-  export default ClientList;
+export default ClientList;
