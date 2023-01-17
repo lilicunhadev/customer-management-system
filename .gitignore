@@ -4,7 +4,6 @@ backend-laravel/public/hot
 backend-laravel/public/storage
 backend-laravel/storage/*.key
 backend-laravel/vendor
-backend-laravel/.env
 backend-laravel/.env.backup
 backend-laravel/.env.production
 backend-laravel/.phpunit.result.cache
