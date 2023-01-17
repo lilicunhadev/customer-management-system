@@ -4,28 +4,23 @@ import { useNavigate } from 'react-router-dom'
 class CreateClient extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {name:'', cpf:'', telephone:''};
+      this.state = {cpf: ''};
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
   
     handleChange(event) {
-      this.setState({[event.target.name] : event.target.value});
+      this.setState({[event.target.cpf] : event.target.value});
     }
   
     handleSubmit(event) {
-      const {name, cpf, telephone} = this.state
-        fetch("http://127.0.0.1:8000/api/client", {
-            method: 'POST',
+      const {cpf} = this.state
+        fetch('http://127.0.0.1:8000/api/client/searchName/'+cpf, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: name,
-                cpf: cpf,
-                telephone: telephone
-            })
+            }
         }
         )
         .then(res => res.json())
@@ -53,11 +48,11 @@ class CreateClient extends React.Component {
         <form onSubmit={this.handleSubmit}>
 
             <label>
-                CPF: &nbsp;
-                <input type="text" name="cpf" value={this.state.cpf} onChange={this.handleChange}/>
-            </label><br/>
+                Buscar CPF: &nbsp;
+                <input type="text" name="name" value={this.state.cpf} onChange={this.handleChange}/>
+            </label><br/><br/>
 
-            <input type="submit" value="Buscar cliente por CPF" />
+            <input type="submit" value="Buscar"/><br/>
 
         </form>
       );

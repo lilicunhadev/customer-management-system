@@ -27,7 +27,7 @@ function App() {
               <Link to ="/searchName">Buscar por nome</Link>
             </li>
             <li>
-              <Link to ="/create/client">Buscar por CPF</Link>
+              <Link to ="/searchCpf">Buscar por CPF</Link>
             </li>
           </ul>
         </nav>
