@@ -129,4 +129,39 @@ class ClientController extends Controller
             ], 404);
         }
     }
+
+    public function searchName($key)
+    {
+        $results = Client::where('name', 'like', "%$key%")->get();
+
+        if ($results) {
+            return response()->json([
+                'message' => 'Um ou mais clientes encontrados.',
+                'data' => $results
+            ], 200);
+        }
+        else {
+            return response()->json([
+                'message' => 'Não foram encontrados clientes com esse nome.'
+            ], 404);
+        }
+    }
+
+    public function searchCpf($key)
+    {
+        $results = Client::where('cpf', '=', "$key")->get();
+
+        if ($results) {
+            return response()->json([
+                'message' => 'Um ou mais clientes encontrados.',
+                'data' => $results
+            ], 200);
+        }
+        else {
+            return response()->json([
+                'message' => 'Não foram encontrados clientes com esse CPF.'
+            ], 404);
+        }
+    }
+
 }

@@ -8,4 +8,8 @@ Sistema para gestão de clientes com backend em **Laravel** e frontend em **Reac
 - Fazer o clone deste projeto;
 - Na pasta do projeto rodar:
 - "composer install"
-- "php artisan serve"
+- Entrar dentro da pasta "backend-laravel" no prompt de comando
+- Digitar "php artisan serve"
+- Depois entrar na pasta "frontend-react" pelo terminal
+- Digitar "npm start"
+- Que ele já abrirá o projeto no navegador
